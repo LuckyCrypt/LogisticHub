@@ -30,17 +30,20 @@ namespace LogisticHub.Domain.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Comments")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("DateAccept")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("DeliveryCity")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.Property<DateTime>("DateArrival")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DateDepart")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("DeliveryStreet")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("boolean");
@@ -52,69 +55,24 @@ namespace LogisticHub.Domain.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("RecipientStreet")
+                    b.Property<string>("PickupCity")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("RecipientСity")
+                    b.Property<string>("PickupSreet")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("SenderCity")
+                    b.Property<string>("phone")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<string>("SenderSreet")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("integer");
 
                     b.Property<float>("weight")
                         .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserID");
-
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("LogisticHub.Domain.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("LogisticHub.Domain.Entities.OrdersApp", b =>
-                {
-                    b.HasOne("LogisticHub.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

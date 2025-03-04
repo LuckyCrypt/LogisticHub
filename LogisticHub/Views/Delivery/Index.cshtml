@@ -1,0 +1,109 @@
+﻿@model LogisticHub.Models.DeliveryRequest
+
+@{
+    ViewBag.Title = "Заявка на доставку";
+}
+
+<h2>Заявка на доставку</h2>
+
+@using (Html.BeginForm("Create", "Delivery", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-user"></i>  
+                </span>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="Name" name="Name" placeholder="Введите имя" value="@Model?.Name" />
+                    <label for="Name" class="form-label">Имя</label>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-phone"></i> 
+                </span>
+                <div class="form-floating">
+                    <input type="tel" class="form-control" id="Phone" name="Phone" placeholder="Введите телефон" value="@Model?.Phone" />
+                    <label for="Phone" class="form-label">Телефон</label>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-map-marker-alt"></i>
+                </span>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="PickupCity" name="PickupCity" placeholder="Введите адрес отправки" value="@Model?.PickupCity" />
+                    <label for="PickupCity" class="form-label">Город отправки</label>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.PickupCity, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-truck"></i>
+                </span>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="PickupStreet" name="PickupStreet" placeholder="Введите адрес доставки" value="@Model?.PickupStreet" />
+                    <label for="PickupStreet" class="form-label">Адрес отправки</label>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.PickupStreet, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-map-marker-alt"></i> 
+                </span>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="DeliveryCity" name="DeliveryCity" placeholder="Введите адрес отправки" value="@Model?.DeliveryCity" />
+                    <label for="DeliveryCity" class="form-label">Город получателя</label>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.DeliveryCity, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-truck"></i>
+                </span>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="DeliveryStreet" name="DeliveryStreet" placeholder="Введите адрес доставки" value="@Model?.DeliveryStreet" />
+                    <label for="DeliveryStreet" class="form-label">Адрес получателя</label>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.DeliveryStreet, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <div class="form-floating">
+                <textarea class="form-control" id="Comments" name="Comments" placeholder="Введите комментарии" style="height: 100px">@Model?.Comments</textarea>
+                <label for="Comments" class="form-label">Комментарии</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}

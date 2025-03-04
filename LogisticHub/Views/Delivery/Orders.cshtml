@@ -1,0 +1,52 @@
+﻿@model List<LogisticHub.Domain.Entities.OrdersApp>
+
+@{
+    ViewBag.Title = "Список заявок на доставку";
+}
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<h2>Список заявок на доставку</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Телефон</th>
+            <th>Город отправки</th>
+            <th>Улица отправки</th>
+            <th>Город доставки</th>
+            <th>Улица доставки</th>
+            <th>Вес (кг)</th>
+            <th>Комментарии</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td>@request.Name</td>
+                    <td>@request.phone</td>
+                    <td>@request.PickupCity</td>
+                    <td>@request.PickupSreet</td>
+                    <td>@request.DeliveryCity</td>
+                    <td>@request.DeliveryStreet</td>
+                    <td>@request.weight</td>
+                    <td>@request.Comments</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7">Нет данных для отображения.</td>
+            </tr>
+        }
+    </tbody>
+</table>

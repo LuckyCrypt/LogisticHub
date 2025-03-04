@@ -7,9 +7,8 @@ namespace LogisticHub.Domain
     public class LogisticHubContext : DbContext
     {
 
-        public DbSet<User> Users { get; set; }
-
         public DbSet<OrdersApp> Orders { get; set; }
+
 
         public LogisticHubContext(DbContextOptions options) : base(options)
         {
