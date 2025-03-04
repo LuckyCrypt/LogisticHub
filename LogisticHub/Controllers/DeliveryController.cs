@@ -62,17 +62,7 @@ namespace LogisticHub.Controllers
 
             return View("Index", model);
         }
-        /*        private List<DeliveryRequest> GetOrders()
-                {
-                    //  Пример данных (замени на свой код получения данных)
-                    var orders = new List<DeliveryRequest>()
-                    {
-                        new DeliveryRequest { OrderId = 1, OrderDate = DateTime.Now.AddDays(-2), CustomerName = "Иван Иванов", DeliveryAddress = "ул. Ленина, 1", TotalAmount = 1500, Status = "Доставлен" },
-                        new DeliveryRequest { OrderId = 2, OrderDate = DateTime.Now.AddDays(-1), CustomerName = "Петр Петров", DeliveryAddress = "пр. Мира, 10", TotalAmount = 2000, Status = "В обработке" },
-                        new DeliveryRequest { OrderId = 3, OrderDate = DateTime.Now, CustomerName = "Анна Сидорова", DeliveryAddress = "ул. Гагарина, 5", TotalAmount = 1000, Status = "Новый" }
-                    };
-                    return orders;
-                }*/
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
