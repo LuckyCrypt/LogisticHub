@@ -43,7 +43,6 @@ namespace LogisticHub.Controllers
                 {
                     Id = default,
                     Name = model.Name,
-                    Comments = model.Comments,
                     CreateDate = DateTime.UtcNow,
                     ModifyDate = DateTime.UtcNow,
                     PickupCity = model.PickupCity,
@@ -56,24 +55,17 @@ namespace LogisticHub.Controllers
                 };
                 _context.Orders.Add(newOrder);
                 await _context.SaveChangesAsync();
+                int numberOrder = newOrder.Id;
                 // Можно перенаправить пользователя на страницу подтверждения
-                return RedirectToAction("Confirmation");
+                return RedirectToAction("Confirmation",new { numberOrder });
             }
 
             return View("Index", model);
         }
 
-        protected override void Dispose(bool disposing)
+        public ActionResult Confirmation(int numberOrder)
         {
-            if (disposing)
-            {
-                _context.Dispose(); // Освобождаем ресурсы DbContext
-            }
-            base.Dispose(disposing);
-        }
-
-        public ActionResult Confirmation()
-        {
+            ViewData["NumberOrder"] = numberOrder;
             return View();
         }
     }

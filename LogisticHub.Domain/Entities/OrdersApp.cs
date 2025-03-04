@@ -18,8 +18,6 @@ namespace LogisticHub.Domain.Entities
 
         public required string phone { get; set; }
 
-        public required string Comments { get; set; }
-
         public bool IsCompleted { get; set; }
 
         public DateTime CreateDate { get; set; }

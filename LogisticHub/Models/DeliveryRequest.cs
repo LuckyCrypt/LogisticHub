@@ -4,6 +4,7 @@ namespace LogisticHub.Models
 {
     public class DeliveryRequest
     {
+        public required int OrderId { get; set; }
         [Required(ErrorMessage = "Имя обязательно для заполнения")]
         [Display(Name = "Имя")]
         public required string Name { get; set; }
@@ -30,11 +31,6 @@ namespace LogisticHub.Models
         [Required(ErrorMessage = "Адрес доставки обязателен для заполнения")]
         [Display(Name = "Адрес доставки")]
         public required string DeliveryStreet { get; set; }
-
-
-        [Display(Name = "Комментарии")]
-        [DataType(DataType.MultilineText)]
-        public string? Comments { get; set; }
 
 
         [Display(Name = "Комментарии")]
