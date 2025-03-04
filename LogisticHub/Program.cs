@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using LogisticHub.Domain;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connectionString = builder.Configuration.GetConnectionString("Default");
+builder.Services.AddDbContext<LogisticHubContext>(opt => opt.UseNpgsql(connectionString));
+
+
 
 var app = builder.Build();
 
